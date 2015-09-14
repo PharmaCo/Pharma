@@ -11,11 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-       echo "kilian1" ;
-       
-         echo "titi";
          
-         echo "kilian2" ;
 
         ?>
     </body>
