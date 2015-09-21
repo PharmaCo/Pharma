@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `Visiteur` (
   `id` char(4) NOT NULL,
   `nom` char(30) DEFAULT NULL,
   `prenom` char(30)  DEFAULT NULL, 
+  `comptable` boolean DEFAULT FALSE,
   `login` char(20) DEFAULT NULL,
   `mdp` char(20) DEFAULT NULL,
   `adresse` char(30) DEFAULT NULL,
