@@ -41,6 +41,16 @@ switch($action){
                 $pdo->supprimerFraisHorsForfait($idFrais);
 		break;
 	}
+        case 'listeMois':{
+            $lesMois = $pdo->LesMois();
+            include("vues/v_listeMoisComptable.php");
+            break;
+        }
+        case 'listeVisiteur':{
+            $lesVisiteurs = $pdo->lesVisiteurs($mois);
+            break;
+        }
+        
 }
 $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
 $lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
