@@ -281,8 +281,8 @@ class PdoGsb{
 			$numAnnee =substr( $mois,0,4);
 			$numMois =substr( $mois,4,2);
 			$lesMois["$mois"]=array(
-		     "mois"=>"$mois",
-		    "numAnnee"  => "$numAnnee",
+                        "mois"=>"$mois",
+                        "numAnnee"  => "$numAnnee",
 			"numMois"  => "$numMois"
              );
 			$laLigne = $res->fetch(); 		
@@ -301,7 +301,7 @@ class PdoGsb{
 			ficheFrais.montantValide as montantValide, etat.libelle as libEtat from  fichefrais inner join Etat on ficheFrais.idEtat = Etat.id 
 			where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		$res = PdoGsb::$monPdo->query($req);
-		$laLigne = $res->fetch();
+		$laLigne = $res->fetchAll();
 		return $laLigne;
 	}
 /**
@@ -317,5 +317,14 @@ class PdoGsb{
 		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		PdoGsb::$monPdo->exec($req);
 	}
+        
+        public function lesVisiteurs($mois){
+                $req = "select nom as nom, prenom as prenom, id as id from visiteur V join fichefrais F on V.id = F.idVisiteur
+                       where F.mois = $mois ;";
+		$rs = PdoGsb::$monPdo->query($req);
+		$ligne = $rs->fetchAll();
+		return $ligne;
+        }
+        
 }
 ?>
